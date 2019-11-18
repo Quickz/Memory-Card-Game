@@ -1,9 +1,22 @@
-﻿@page "/"
+﻿@namespace Memory_Card_Game.Game
+@page "/"
 
-<div class="text-center">
+    <div class="text-center">
 
-    <h1>Memory Card Game</h1>
+        <h1>Memory Card Game</h1>
 
-    Coming soon!
+    @for (int y = 0; y < game.cards.GetLength(1); y++)
+    {
+        @for (int x = 0; x < game.cards.GetLength(0); x++)
+        {
+            <button class="btn btn-primary">[ ]</button>
+        }
+        <br />
+    }
 
-</div>
+    </div>
+
+@code
+{
+    CardGame game = new CardGame(5, 5);
+}
