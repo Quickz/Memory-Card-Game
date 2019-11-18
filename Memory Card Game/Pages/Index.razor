@@ -11,7 +11,9 @@
         {
             <button
                     class="btn btn-primary"
-                    style="background-color: @game.cards[x, y].Color"
+                    style="
+                        background-color: @game.cards[x, y].Color;
+                        opacity: @game.cards[x, y].Opacity;"
                     @onclick=@game.cards[x, y].Click>[ ]</button>
         }
         <br />

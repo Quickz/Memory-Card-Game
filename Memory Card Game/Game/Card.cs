@@ -21,7 +21,20 @@ namespace Memory_Card_Game.Game
             }
         }
 
+        public double Opacity
+        {
+            get
+            {
+                if (Enabled)
+                {
+                    return 1f;
+                }
+                return 0.5f;
+            }
+        }
+
         public bool Revealed { get; set; }
+        public bool Enabled { get; set; } = true;
 
         private const string HiddenStateColor = "#c3c3c3";
         private readonly string revealedStateColor;
@@ -33,6 +46,10 @@ namespace Memory_Card_Game.Game
         
         public void Click()
         {
+            if (!Enabled)
+            {
+                return;
+            }
             Clicked?.Invoke(this, this);
         }
 

@@ -53,7 +53,14 @@ namespace Memory_Card_Game.Game
 
             if (selectedCards.Count >= 2)
             {
-                if (!AllSelectedCardsAreSameColor())
+                if (AllSelectedCardsAreSameColor())
+                {
+                    foreach (Card selectedCard in selectedCards)
+                    {
+                        selectedCard.Enabled = false;
+                    }
+                }
+                else
                 {
                     foreach (Card selectedCard in selectedCards)
                     {
