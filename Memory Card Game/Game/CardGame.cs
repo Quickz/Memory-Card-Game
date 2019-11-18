@@ -20,13 +20,29 @@ namespace Memory_Card_Game.Game
             }
 
             cards = new Card[cardCountX, cardCountY];
+            IEnumerator<string> cardColors = CardColors();
 
-            for (int i = 0; i < cards.GetLength(0); i++)
+            for (int y = 0; y < cards.GetLength(1); y++)
             {
-                for (int j = 0; j < cards.GetLength(1); j++)
+                for (int x = 0; x < cards.GetLength(0); x++)
                 {
-                    cards[i, j] = new Card("#" + StringUtility.RandomHexNumber(6));
+                    cardColors.MoveNext();
+                    cards[x, y] = new Card(cardColors.Current);
                 }
+            }
+        }
+
+        /// <summary>
+        ///  Returns a color in form of a hexademical string.
+        ///  Returns each random value twice.
+        /// </summary>
+        private IEnumerator<string> CardColors()
+        {
+            while (true)
+            {
+                string color = "#" + StringUtility.RandomHexNumber(6);
+                yield return color;
+                yield return color;
             }
         }
     }
