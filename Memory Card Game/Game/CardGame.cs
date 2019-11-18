@@ -40,22 +40,38 @@ namespace Memory_Card_Game.Game
 
         private void OnCardClicked(object sender, Card card)
         {
-            if (selectedCards.Contains(card))
+            if (card.Revealed)
             {
                 return;
             }
 
             if (selectedCards.Count >= 2)
             {
-                foreach (Card selectedCard in selectedCards)
+                if (!AllSelectedCardsAreSameColor())
                 {
-                    selectedCard.Revealed = false;
+                    foreach (Card selectedCard in selectedCards)
+                    {
+                        selectedCard.Revealed = false;
+                    }
                 }
+                
                 selectedCards.Clear();
             }
 
             card.Revealed = true;
             selectedCards.Add(card);
+        }
+
+        private bool AllSelectedCardsAreSameColor()
+        {
+            for (int i = 1; i < selectedCards.Count; i++)
+            {
+                if (!selectedCards[0].Matches(selectedCards[i]))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         /// <summary>

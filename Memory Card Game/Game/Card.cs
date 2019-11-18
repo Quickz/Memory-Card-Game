@@ -17,23 +17,32 @@ namespace Memory_Card_Game.Game
                 {
                     return revealedStateColor;
                 }
-                return hiddenStateColor;
+                return HiddenStateColor;
             }
         }
 
         public bool Revealed { get; set; }
 
+        private const string HiddenStateColor = "#c3c3c3";
         private readonly string revealedStateColor;
-        private const string hiddenStateColor = "#c3c3c3";
 
         public Card(string color)
         {
             revealedStateColor = color;
         }
-
+        
         public void Click()
         {
             Clicked?.Invoke(this, this);
+        }
+
+        /// <summary>
+        ///  Returns true if both cards have the same
+        ///  reveal state color.
+        /// </summary>
+        public bool Matches(Card card)
+        {
+            return revealedStateColor == card.revealedStateColor;
         }
     }
 }
