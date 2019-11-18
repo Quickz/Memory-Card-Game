@@ -23,6 +23,12 @@ namespace Memory_Card_Game.Game
             }
 
             cards = new Card[cardCountX, cardCountY];
+            StartNewSession();
+        }
+
+        private void StartNewSession()
+        {
+            selectedCards.Clear();
             IEnumerator<string> cardColors = CardColors();
 
             for (int y = 0; y < cards.GetLength(1); y++)
@@ -60,6 +66,11 @@ namespace Memory_Card_Game.Game
 
             card.Revealed = true;
             selectedCards.Add(card);
+
+            if (AllCardsAreRevealed())
+            {
+                StartNewSession();
+            }
         }
 
         private bool AllSelectedCardsAreSameColor()
@@ -86,6 +97,21 @@ namespace Memory_Card_Game.Game
                 yield return color;
                 yield return color;
             }
+        }
+
+        private bool AllCardsAreRevealed()
+        {
+            for (int y = 0; y < cards.GetLength(1); y++)
+            {
+                for (int x = 0; x < cards.GetLength(0); x++)
+                {
+                    if (!cards[x, y].Revealed)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
         }
     }
 }
