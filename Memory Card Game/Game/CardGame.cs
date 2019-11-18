@@ -26,7 +26,7 @@ namespace Memory_Card_Game.Game
             StartNewSession();
         }
 
-        private void StartNewSession()
+        public void StartNewSession()
         {
             selectedCards.Clear();
             IEnumerator<string> cardColors = CardColors();
