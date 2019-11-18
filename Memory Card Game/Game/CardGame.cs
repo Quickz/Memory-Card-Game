@@ -9,6 +9,7 @@ namespace Memory_Card_Game.Game
 {
     public class CardGame
     {
+        public bool won { get; private set; }
         public Card[,] cards;
 
         private List<Card> selectedCards = new List<Card>();
@@ -29,6 +30,7 @@ namespace Memory_Card_Game.Game
         public void StartNewSession()
         {
             selectedCards.Clear();
+            won = false;
             IEnumerator<string> cardColors = CardColors();
 
             for (int y = 0; y < cards.GetLength(1); y++)
@@ -46,7 +48,7 @@ namespace Memory_Card_Game.Game
 
         private void OnCardClicked(object sender, Card card)
         {
-            if (card.Revealed)
+            if (card.Revealed || won)
             {
                 return;
             }
@@ -76,7 +78,7 @@ namespace Memory_Card_Game.Game
 
             if (AllCardsAreRevealed())
             {
-                StartNewSession();
+                won = true;
             }
         }
 
