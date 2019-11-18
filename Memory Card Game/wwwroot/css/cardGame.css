@@ -6,9 +6,8 @@
     margin: 2.5px;
 }
 
-.game-card-row {
+.game-card-container {
     display: flex;
-    width: 170px;
     height: auto;
     flex-direction: row;
     flex-wrap: wrap;

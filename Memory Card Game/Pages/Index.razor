@@ -5,7 +5,8 @@
 
         <h1>Memory Card Game</h1>
 
-        <div class="game-card-row">
+        <div class="game-card-container"
+             style="width: @CardContainerWidth()px">
 
             @for (int y = 0; y < game.cards.GetLength(1); y++)
             {
@@ -42,5 +43,13 @@
 
 @code
 {
-    CardGame game = new CardGame(3, 2);
+    CardGame game = new CardGame(4, 3);
+}
+
+@functions
+{
+    private double CardContainerWidth()
+    {
+        return game.cards.GetLength(0) * 50d + (game.cards.GetLength(0) + 1d) * 5d;
+    }
 }
