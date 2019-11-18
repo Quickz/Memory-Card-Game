@@ -1,4 +1,5 @@
 ﻿using Memory_Card_Game.Utilities;
+using Memory_Card_Game.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,8 @@ namespace Memory_Card_Game.Game
                     cards[x, y] = new Card(cardColors.Current);
                 }
             }
+
+            cards.Shuffle();
         }
 
         /// <summary>
