@@ -5,20 +5,24 @@
 
         <h1>Memory Card Game</h1>
 
-        @for (int y = 0; y < game.cards.GetLength(1); y++)
-        {
-            @for (int x = 0; x < game.cards.GetLength(0); x++)
+        <div class="game-card-row">
+
+            @for (int y = 0; y < game.cards.GetLength(1); y++)
             {
-                <button class="btn btn-primary"
-                        style="
+                @for (int x = 0; x < game.cards.GetLength(0); x++)
+                {
+                    <button class="game-card"
+                            style="
                         background-color: @game.cards[x, y].Color;
                         opacity: @game.cards[x, y].Opacity;"
-                        @onclick=@game.cards[x, y].Click>
-                    [ ]
-                </button>
+                            @onclick=@game.cards[x, y].Click>
+                        [ ]
+                    </button>
+                }
+                <br />
             }
-            <br />
-        }
+
+        </div>
 
         @if (game.won)
         {

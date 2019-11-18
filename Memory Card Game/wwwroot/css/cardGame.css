@@ -1,0 +1,18 @@
+﻿.game-card {
+    width: 50px;
+    height: 50px;
+    border: none;
+    padding: 0;
+    margin: 2.5px;
+}
+
+.game-card-row {
+    display: flex;
+    width: 170px;
+    height: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: auto;
+    align-content: space-around;
+    padding: 2.5px;
+}
