@@ -7,13 +7,31 @@ namespace Memory_Card_Game.Game
 {
     public class Card
     {
-        public string Color { get; private set; }
+        public string Color
+        {
+            get
+            {
+                if (Revealed)
+                {
+                    return revealedStateColor;
+                }
+                return hiddenStateColor;
+            }
+        }
 
-        public bool Revealed { get; set; }
+        public bool Revealed { get; private set; }
+
+        private readonly string revealedStateColor;
+        private const string hiddenStateColor = "#c3c3c3";
 
         public Card(string color)
         {
-            Color = color;
+            revealedStateColor = color;
+        }
+
+        public void Select()
+        {
+            Revealed = !Revealed;
         }
     }
 }
