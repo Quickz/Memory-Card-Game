@@ -12,6 +12,13 @@ namespace Memory_Card_Game.Game
 
         public CardGame(int cardCountX, int cardCountY)
         {
+            if (cardCountX * cardCountY % 2 != 0)
+            {
+                throw new InvalidOperationException(
+                    "Total card count has to be an even number " +
+                    "otherwise there'll be a pair lacking a card");
+            }
+
             cards = new Card[cardCountX, cardCountY];
 
             for (int i = 0; i < cards.GetLength(0); i++)
