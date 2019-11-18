@@ -7,6 +7,8 @@ namespace Memory_Card_Game.Game
 {
     public class Card
     {
+        public event EventHandler<Card> Clicked;
+
         public string Color
         {
             get
@@ -19,7 +21,7 @@ namespace Memory_Card_Game.Game
             }
         }
 
-        public bool Revealed { get; private set; }
+        public bool Revealed { get; set; }
 
         private readonly string revealedStateColor;
         private const string hiddenStateColor = "#c3c3c3";
@@ -29,9 +31,9 @@ namespace Memory_Card_Game.Game
             revealedStateColor = color;
         }
 
-        public void Select()
+        public void Click()
         {
-            Revealed = !Revealed;
+            Clicked?.Invoke(this, this);
         }
     }
 }

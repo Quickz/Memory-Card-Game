@@ -11,6 +11,8 @@ namespace Memory_Card_Game.Game
     {
         public Card[,] cards;
 
+        private List<Card> selectedCards = new List<Card>();
+
         public CardGame(int cardCountX, int cardCountY)
         {
             if (cardCountX * cardCountY % 2 != 0)
@@ -29,10 +31,31 @@ namespace Memory_Card_Game.Game
                 {
                     cardColors.MoveNext();
                     cards[x, y] = new Card(cardColors.Current);
+                    cards[x, y].Clicked += OnCardClicked;
                 }
             }
 
             cards.Shuffle();
+        }
+
+        private void OnCardClicked(object sender, Card card)
+        {
+            if (selectedCards.Contains(card))
+            {
+                return;
+            }
+
+            if (selectedCards.Count >= 2)
+            {
+                foreach (Card selectedCard in selectedCards)
+                {
+                    selectedCard.Revealed = false;
+                }
+                selectedCards.Clear();
+            }
+
+            card.Revealed = true;
+            selectedCards.Add(card);
         }
 
         /// <summary>
