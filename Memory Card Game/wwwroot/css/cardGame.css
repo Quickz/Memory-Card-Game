@@ -15,10 +15,14 @@
         transition: transform 0.6s;
         transform-style: preserve-3d;
     }
+        
+        .game-card:hover {
+            cursor: pointer;
+        }
 
-    .game-card-flipped .inner {
-        transform: rotateY(180deg);
-    }
+        .game-card-flipped .inner {
+            transform: rotateY(180deg);
+        }
 
         .game-card .inner .front,
         .game-card .inner .back {
