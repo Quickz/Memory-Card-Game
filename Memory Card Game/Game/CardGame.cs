@@ -32,13 +32,19 @@ namespace Memory_Card_Game.Game
             selectedCards.Clear();
             won = false;
             IEnumerator<string> cardColors = CardColors();
+            IEnumerator<int> cardNumbers = CardNumbers();
 
             for (int y = 0; y < cards.GetLength(1); y++)
             {
                 for (int x = 0; x < cards.GetLength(0); x++)
                 {
                     cardColors.MoveNext();
-                    cards[x, y] = new Card(cardColors.Current);
+                    cardNumbers.MoveNext();
+
+                    cards[x, y] = new Card(
+                        cardColors.Current,
+                        cardNumbers.Current.ToString());
+
                     cards[x, y].Clicked += OnCardClicked;
                 }
             }
@@ -105,6 +111,15 @@ namespace Memory_Card_Game.Game
                 string color = "#" + StringUtility.RandomHexNumber(6);
                 yield return color;
                 yield return color;
+            }
+        }
+
+        private IEnumerator<int> CardNumbers()
+        {
+            for (int i = 1; true; i++)
+            {
+                yield return i;
+                yield return i;
             }
         }
 

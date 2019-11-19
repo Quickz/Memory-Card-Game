@@ -21,7 +21,11 @@
                             <div class="back"
                                  style="
                                  background-color: @game.cards[x, y].Color;
-                                 opacity: @game.cards[x, y].Opacity;"></div>
+                                 opacity: @game.cards[x, y].Opacity;">
+
+                                @game.cards[x, y].Text
+
+                            </div>
                         </div>
 
                     </div>

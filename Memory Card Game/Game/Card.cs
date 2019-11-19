@@ -21,6 +21,8 @@ namespace Memory_Card_Game.Game
             }
         }
 
+        public string Text { get; private set; }
+
         public double Opacity
         {
             get
@@ -39,9 +41,10 @@ namespace Memory_Card_Game.Game
         private const string HiddenStateColor = "#c3c3c3";
         private readonly string revealedStateColor;
 
-        public Card(string color)
+        public Card(string color, string text)
         {
             revealedStateColor = color;
+            Text = text;
         }
         
         public void Click()
