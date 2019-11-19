@@ -25,5 +25,26 @@ namespace Memory_Card_Game.Utilities
 
             return result + random.Next(16).ToString("X");
         }
+
+        public static string RandomHexColor(
+            byte minRed = 0,
+            byte maxRed = 255,
+            byte minGreen = 0,
+            byte maxGreen = 255,
+            byte minBlue = 0,
+            byte maxBlue = 255)
+        {
+            byte[] buffer = new byte[3];
+
+            buffer[0] = (byte)random.Next(minRed, maxRed);
+            buffer[1] = (byte)random.Next(minGreen, maxGreen);
+            buffer[2] = (byte)random.Next(minBlue, maxBlue);
+
+            string result = string.Concat(buffer
+                .Select(x => x.ToString("X2"))
+                .ToArray());
+
+            return "#" + result;
+        }
     }
 }

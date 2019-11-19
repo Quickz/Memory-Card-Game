@@ -108,7 +108,7 @@ namespace Memory_Card_Game.Game
         {
             while (true)
             {
-                string color = "#" + StringUtility.RandomHexNumber(6);
+                string color = StringUtility.RandomHexColor(0, 125, 0, 125, 0, 125);
                 yield return color;
                 yield return color;
             }
