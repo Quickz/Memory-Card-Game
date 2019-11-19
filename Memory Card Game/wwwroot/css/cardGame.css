@@ -6,6 +6,33 @@
     margin: 2.5px;
 }
 
+    .game-card .inner {
+        width: 100%;
+        height: 100%;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+    }
+
+    .game-card-flipped .inner {
+        transform: rotateY(180deg);
+    }
+
+        .game-card .inner .front,
+        .game-card .inner .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+        }
+
+        .game-card .inner .front {
+            background-color: #c3c3c3;
+        }
+
+        .game-card .inner .back {
+            transform: rotateY(180deg);
+        }
+
 .game-card-container {
     display: flex;
     height: auto;
