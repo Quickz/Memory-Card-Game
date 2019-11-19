@@ -40,6 +40,10 @@
             transform: rotateY(180deg);
         }
 
+        .game-card:hover .inner .front {
+            opacity: 0.8;
+        }
+
 .game-card-container {
     display: flex;
     height: auto;
