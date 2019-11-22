@@ -6,19 +6,28 @@
     <meta name="viewport" content="width=device-width" />
     <title>Memory Card Game</title>
     <base href="/Memory-Card-Game/" />
+    <link href="initial-load/initialLoad.css" rel="stylesheet" />
+    <link href="css/loader.css" rel="stylesheet" />
     <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
     <link href="css/site.css" rel="stylesheet" />
     <link href="css/cardGame.css" rel="stylesheet" />
 </head>
 
 <body>
-    <app>Loading...</app>
+    <app id="app" class="hide"></app>
+
+    <div id="loader" class="loader full-center">
+        <label class="label">Loading</label>
+        <div class="icon"></div>
+    </div>
 
     <div id="blazor-error-ui">
         An unhandled error has occurred.
         <a href="" class="reload">Reload</a>
         <a class="dismiss">🗙</a>
     </div>
+
+    <script src="initial-load/initialLoad.js"></script>
     <script src="_framework/blazor.webassembly.js"></script>
 </body>
 
