@@ -1,54 +1,56 @@
 ﻿@namespace Memory_Card_Game.Game
 @page "/"
 
-    <div class="text-center">
+    <div>
+        <div class="game-container">
 
-        <h1>Memory Card Game</h1>
+            <h1>Memory Card Game</h1>
 
-        <div class="game-card-container"
-             style="width: @CardContainerWidth()px">
+            <div class="game-card-container"
+                 style="width: @CardContainerWidth()px">
 
-            @for (int y = 0; y < game.cards.GetLength(1); y++)
-            {
-                @for (int x = 0; x < game.cards.GetLength(0); x++)
+                @for (int y = 0; y < game.cards.GetLength(1); y++)
                 {
-                    <div class="game-card @FlippedCardClassIfRevealedAt(x, y)"
-                         @onclick=@game.cards[x, y].Click>
-                        
-                        <div class="inner">
-                            <div class="front"></div>
-                            
-                            <div class="back"
-                                 style="
-                                 background-color: @game.cards[x, y].Color;
-                                 opacity: @game.cards[x, y].Opacity;">
+                    @for (int x = 0; x < game.cards.GetLength(0); x++)
+                    {
+                        <div class="game-card @FlippedCardClassIfRevealedAt(x, y)"
+                             @onclick=@game.cards[x, y].Click>
 
-                                @game.cards[x, y].Text
+                            <div class="inner">
+                                <div class="front"></div>
 
+                                <div class="back"
+                                     style="
+                                     background-color: @game.cards[x, y].Color;
+                                     opacity: @game.cards[x, y].Opacity;">
+
+                                    @game.cards[x, y].Text
+
+                                </div>
                             </div>
-                        </div>
 
-                    </div>
+                        </div>
+                    }
+                    <br />
                 }
-                <br />
+
+            </div>
+
+            @if (game.won)
+            {
+                <h3>You WON!</h3>
+            }
+            else
+            {
+                <h3>Reveal all cards to win.</h3>
             }
 
+            <button class="game-btn btn-primary"
+                    @onclick=@game.StartNewSession>
+                Restart
+            </button>
+
         </div>
-
-        @if (game.won)
-        {
-            <h3>You WON!</h3>
-        }
-        else
-        {
-            <h3>Reveal all cards to win.</h3>
-        }
-
-        <button class="game-btn btn-primary"
-                @onclick=@game.StartNewSession>
-            Restart
-        </button>
-
     </div>
 
 @code
