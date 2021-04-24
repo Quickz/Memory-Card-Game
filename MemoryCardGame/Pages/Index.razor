@@ -1,0 +1,76 @@
+﻿@namespace MemoryCardGame.Game
+@page "/"
+
+<div>
+    <div class="game-container">
+
+        <h1>Memory Card Game</h1>
+
+        <div class="game-card-container"
+             style="width: @CardContainerWidth()px">
+
+            @for (int y = 0; y < game.cards.GetLength(1); y++)
+            {
+                @for (int x = 0; x < game.cards.GetLength(0); x++)
+                {
+                    <div class="game-card @FlippedCardClassIfRevealedAt(x, y)"
+                         @onclick=@game.cards[x, y].Click>
+
+                        <div class="inner">
+                            <div class="front"></div>
+
+                            <div class="back"
+                                 style="
+                                     background-color: @game.cards[x, y].Color;
+                                     opacity: @game.cards[x, y].Opacity;">
+
+                                @game.cards[x, y].Text
+
+                            </div>
+                        </div>
+
+                    </div>
+                }
+                <br />
+            }
+
+        </div>
+
+        @if (game.won)
+        {
+            <h3>You WON!</h3>
+        }
+        else
+        {
+            <h3>Reveal all cards to win.</h3>
+        }
+
+        <button class="game-btn btn-primary"
+                @onclick=@game.StartNewSession>
+            Restart
+        </button>
+
+    </div>
+</div>
+
+@code
+{
+    CardGame game = new CardGame(4, 3);
+}
+
+@functions
+{
+    private double CardContainerWidth()
+    {
+        return game.cards.GetLength(0) * 50d + (game.cards.GetLength(0) + 1d) * 5d;
+    }
+
+    private string FlippedCardClassIfRevealedAt(int x, int y)
+    {
+        if (game.cards[x, y].Revealed)
+        {
+            return "game-card-flipped";
+        }
+        return string.Empty;
+    }
+}

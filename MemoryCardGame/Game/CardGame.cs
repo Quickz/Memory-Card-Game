@@ -1,11 +1,11 @@
-﻿using Memory_Card_Game.Utilities;
-using Memory_Card_Game.Extensions;
+﻿using MemoryCardGame.Utilities;
+using MemoryCardGame.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Memory_Card_Game.Game
+namespace MemoryCardGame.Game
 {
     public class CardGame
     {

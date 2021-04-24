@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Memory_Card_Game.Utilities
+namespace MemoryCardGame.Utilities
 {
     public static class StringUtility
     {
